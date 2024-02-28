@@ -6,13 +6,14 @@
 Dockerイメージはここで公開します。
 
 以下、Dockerイメージの説明です。
+（これをご覧になれば明らかなように、僕のPython & Docker経験値は低い。）
 
 ## 動作確認をした環境
 
 - M2 Macbook Air
 - WSL2(Ubuntu)
 
-## dockerイメージのビルド
+## Dockerイメージのビルド
 
 ### ファイルの説明
 
@@ -28,10 +29,11 @@ RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 EXPOSE 8888
 ```
 
-はじめ、Macbook本体に入れていた[本家のpython](https://www.python.org/downloads/)のバージョン3.12でTensorflowを使おうとしたらトラブルがあったので、このイメージではpython3.11.8を指定しました。
+はじめ、Macbook本体に入れていた[本家のpython](https://www.python.org/downloads/)のバージョン3.12でTensorflowを使おうとしたらトラブルがあったので、ここではpython3.11.8を指定しました。
 
-[requirements.txt](./requests.txt)に含めたパッケージは[松尾研が公開しているもの](https://github.com/matsuolab-edu/dl4us/blob/master/requirements.txt)よりも少なくしました。
-バージョンも今日のpipでインストールできるように変更しました（ただし作業日は2024年2月25日）。
+[requirements.txt](./requirements.txt)に含めたパッケージは[松尾研が公開しているもの](https://github.com/matsuolab-edu/dl4us/blob/master/requirements.txt)よりも少なくしました。
+最低限、Lesson1を実行できるはずです。
+バージョンも2024年2月25日時点のpipでインストールできるように変更しました。
 requirements.txtの中身は次の通りです：
 ```
 Keras==2.15.0
@@ -74,8 +76,6 @@ docker image build -t mypython:3.11.8 .
 によってビルドできます。
 
 ## 実行
-
-### コンテナの起動
 
 お好きなディレクトリで
 ```
